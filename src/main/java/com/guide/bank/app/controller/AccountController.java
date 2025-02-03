@@ -55,4 +55,10 @@ public class AccountController {
         List<AccountDto> accounts = accountService.getAllAccounts();
         return ResponseEntity.ok(accounts);
     }
+    // Delete Account REST API
+    @DeleteMapping("/{accountId}")
+    public ResponseEntity<String> deleteAccount(@PathVariable UUID accountId){
+        accountService.deleteAccount(accountId);
+        return ResponseEntity.ok("Account is deleted Successfully");
+    }
 }

@@ -67,4 +67,13 @@ public class AccountServiceImpl implements AccountService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void deleteAccount(UUID accountId) {
+        Account account = accountRepository
+                .findById(accountId)
+                .orElseThrow(() ->new RuntimeException("Account does not exist"));
+        accountRepository.deleteById(accountId);
+
+    }
+
 }
